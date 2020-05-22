@@ -1,0 +1,57 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <title>Android device DP value calculator</title>
+    <meta name="description" content="DP Calculator">
+    <meta name="author" content="Electric1447">
+  </head>
+
+  <body>
+
+    <h1>Android device DP value calculator</h1>
+
+    <table>
+      <tr>
+        <td><label for="wp">Screen Width (Pixels):</label></td>
+        <td><input type="number" max="10000" min="1" name="wp" value="0" placeholder="0"></td>
+      </tr>
+      <tr>
+        <td><label for="hp">Screen Height (Pixels):</label></td>
+        <td><input type="number" max="10000" min="1" name="hp" value="0" placeholder="0"></td>
+      </tr>
+      <tr>
+        <td><label for="di">Screen Size (Inches):</label></td>
+        <td><input type="number" max="100" min="1" name="di" value="0" placeholder="0"></td>
+      </tr>
+    </table><br>
+		
+    <button type="button" name="button" onclick="calculate()">Calculate</button><br><br>
+    <span id="output">Screen Density is:</span>
+		
+    <script type="text/javascript">
+      function calculate() {
+        var wp = document.getElementsByName('wp')[0].value;
+        var hp = document.getElementsByName('hp')[0].value;
+        var di = document.getElementsByName('di')[0].value;
+        
+        var result = Math.sqrt((wp * wp) + (hp * hp)) / di;
+        var resultStr = "";
+        
+        if (wp == 0)
+          resultStr = "Please enther screen width.";
+        else if (hp == 0)
+          resultStr = "Please enther screen height.";
+        else if (di == 0)
+          resultStr = "Please enther screen size.";
+        else
+          resultStr = "Screen Density is: " + result.toFixed(2) + "dp";
+        
+        document.getElementById('output').innerHTML = resultStr;
+      }
+    </script>
+
+  </body>
+</html>
